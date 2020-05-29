@@ -1,0 +1,55 @@
+---
+- hosts: localhost
+  gather_facts: false
+  remote_user: raahool
+
+  tasks:
+     - name: PLABOOK STARTED FOR SHUTDOWN TASKS...
+       command: date -u
+       changed_when: false
+
+- import_playbook: ./template/scheduler_stop.inc 
+- import_playbook: ./template/adapters_stop.inc
+- import_playbook: ./template/spectre_stop.inc 
+- import_playbook: ./template/skyfall_stop.inc 
+- import_playbook: ./template/temp_table_delection.inc 
+
+- hosts: localhost
+  gather_facts: false
+  remote_user: raahool
+
+  tasks:
+     - name: PLABOOK COMPLETED FOR SHUTDOWN TASKS...
+       command: date -u
+       changed_when: false
+
+     - wait_for: 
+        timeout: 1
+       delegate_to: localhost
+
+- hosts: localhost
+  gather_facts: false
+  remote_user: raahool
+
+  tasks:
+     - name: PLABOOK STARTED FOR STARTUP TASKS...
+       command: date -u
+       changed_when: false
+
+
+- import_playbook: ./template/skyfall_start.inc 
+- import_playbook: ./template/retries_log_checks.inc 
+- import_playbook: ./template/spectre_start.inc 
+- import_playbook: ./template/advance_log_verify.inc 
+- import_playbook: ./template/adapters_start.inc 
+- import_playbook: ./template/scheduler_start.inc 
+
+- hosts: localhost
+  gather_facts: false
+  remote_user: raahool
+
+  tasks:
+     - name: PLABOOK COMPLETED FOR STARTUP TASKS...
+       command: date -u
+       changed_when: false
+
