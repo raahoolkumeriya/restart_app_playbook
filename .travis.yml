@@ -10,7 +10,8 @@ install:
   # Install Ansible.
   - pip install ansible
 
-  - echo 'SHA256:cij4zTaY4lS9hX05L6vu0CbYfdXTNT00/p2lmR0IbhU' >> $HOME/.ssh/known_hosts 
+addons:
+  ssh_known_hosts: github.com  
   
 script:
   - ansible-playbook -i application_restart/inventory application_restart/restart.yml  
