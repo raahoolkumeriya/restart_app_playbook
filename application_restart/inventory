@@ -1,0 +1,16 @@
+[vars:all]
+
+[primary_host]
+localhost
+
+[secondary_host]
+localhost
+
+[tertiary_host]
+localhost
+
+[appserver]
+localhost
+
+[quaternary_host]
+localhost

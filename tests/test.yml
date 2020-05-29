@@ -1,8 +1,0 @@
----
-  - hosts: localhost
-    remote_user: root
-    tasks:
-    - name: Simple data task
-      shell: data -u
-      register: output
-    - debug: var=output.stdout

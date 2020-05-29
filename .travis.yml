@@ -11,4 +11,4 @@ install:
   - pip install ansible
 
 script:
-  - ansible-playbook -i tests/inventory tests/test.yml --syntax-check
+  - ansible-playbook -i application_restart/inventory application_restart/restart.yml --syntax-check 
