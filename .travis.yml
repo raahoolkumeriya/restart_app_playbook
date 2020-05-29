@@ -10,5 +10,8 @@ install:
   # Install Ansible.
   - pip install ansible
 
+addons:
+  ssh_known_hosts: ssh.github.com  
+  
 script:
   - ansible-playbook -i application_restart/inventory application_restart/restart.yml  
